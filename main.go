@@ -49,9 +49,17 @@ func main() {
 
 	results := SplitMyNumber(num, split)
 	fmt.Println(results)
+	fmt.Println("Press any key to exit!")
+	fmt.Scanf("e")
 
 }
 
+/*
+	@func Split the number
+	@param int num The number required to split
+	@param int split The number of parts required
+	@return []int slice
+*/
 func SplitMyNumber(num int, split int) []int {
 
 	fmt.Printf("Your Number is : %d and split value is %d \n", num, split)

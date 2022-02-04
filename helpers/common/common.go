@@ -6,12 +6,24 @@ import (
 	"time"
 )
 
+/**
+	@func Shullf the slice
+	@param []int slice
+	@return []int slice shuffled slice
+
+**/
 func ShuffleMe(a []int) []int {
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
 	return a
 }
 
+/**
+	@func Sum the slice
+	@param []int slice
+	@return int sum of slice
+
+**/
 func SumSlice(result []int) int {
 	var sum = 0
 	for _, v := range result {
@@ -20,6 +32,14 @@ func SumSlice(result []int) int {
 	return sum
 }
 
+/**
+	@func Distribute the remaining number to all items
+	@param []int slice input slice available
+	@param int last_num the number to distribute
+	@param int split number of parts required
+	@return []int slice
+
+**/
 func DistributeVals(result []int, last_num int, split int) []int {
 
 	sort.IntsAreSorted(result)
