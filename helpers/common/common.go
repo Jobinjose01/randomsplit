@@ -2,6 +2,7 @@ package common
 
 import (
 	"math/rand"
+	"sort"
 	"time"
 )
 
@@ -17,4 +18,39 @@ func SumSlice(result []int) int {
 		sum += v
 	}
 	return sum
+}
+
+func DistributeVals(result []int, last_num int, split int) []int {
+
+	sort.IntsAreSorted(result)
+
+	largest_num := result[len(result)-1]
+
+	diff := last_num - largest_num
+	result[len(result)-1] = largest_num + 1
+	diff = diff - 1
+
+	if diff >= split && diff%split == 0 {
+		extra := (diff / split)
+
+		for key, val := range result {
+			result[key] = int(val + extra)
+		}
+	}
+	if diff >= split && diff%split != 0 {
+
+		remainder := diff % split
+		extra := (diff / split)
+
+		for key, val := range result {
+			result[key] = int(val+extra) + remainder
+			remainder = 0
+		}
+	}
+
+	if diff < split {
+		result[split-1] = last_num
+	}
+
+	return result
 }

@@ -63,14 +63,14 @@ func SplitMyNumber(num int, split int) []int {
 	if err != nil {
 		fmt.Print(err)
 	}
-	first_random := nBig.Int64()
-
+	first_random := nBig.Int64() + 1
 	results[0] = int(first_random)
 	temp := int(first_random)
-
 	for j := 0; j < split-2; j++ {
 		new_num := (num - temp) / split
-
+		if new_num <= 0 {
+			new_num = 1
+		}
 		next_random, err := rand.Int(rand.Reader, big.NewInt(int64(new_num)))
 		if err != nil {
 			fmt.Print(err)
@@ -78,9 +78,12 @@ func SplitMyNumber(num int, split int) []int {
 		next_rnd := next_random.Int64() + 1
 		results[j+1] = int(next_rnd)
 		temp += int(next_rnd)
+
 	}
 
-	results[split-1] = num - temp
+	last_num := num - temp
+
+	results = common.DistributeVals(results, last_num, split)
 
 	sum := common.SumSlice(results)
 	fmt.Printf("Sum of the slice is : %d \n", sum)

@@ -1,4 +1,4 @@
-## Number Split Randomnly
+## Number Split Randomly
 
 The sample code written in `Go lang` 
 
@@ -42,6 +42,10 @@ or
 ### Coverage Test
 
 `go test -coverprofile=coverage.out`
+
+HTML view
+
+`go tool cover -html=coverage.out`
 
 ### Benchmarks
 
