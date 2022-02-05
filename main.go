@@ -66,6 +66,11 @@ func SplitMyNumber(num int, split int) []int {
 
 	results := make([]int, split)
 
+	if split == 1 {
+		results[0] = num
+		return results
+	}
+
 	p1 := (num / split)
 	nBig, err := rand.Int(rand.Reader, big.NewInt(int64(p1)))
 	if err != nil {
